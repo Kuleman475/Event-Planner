@@ -3,6 +3,7 @@ Sprint 4 Hours and Websites
 1 Hour Module Plan
 3 Hour Firebase setup
 1 Hour setup Read for Events and Guest List
+1 Hour Setup Create for Events
 
 
 
@@ -10,6 +11,7 @@ https://firebase.google.com/docs/firestore/quickstart#python
 https://firebase.google.com/docs/ai-logic?authuser=0#get-started
 https://cloud.google.com/python/docs/reference/firestore/latest
 https://firebase.google.com/docs/firestore/query-data/get-data#python_2
+https://firebase.google.com/docs/firestore/manage-data/add-data#python
 
 
 Events

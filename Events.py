@@ -1,5 +1,5 @@
 import firebase_admin
-
+import os
 from firebase_admin import credentials, firestore
 
 
@@ -17,26 +17,71 @@ userChoice = int(input("Your Choice: "))
 
 ####### EVENTS  ############
 if userChoice == 1:
-    events_ref = db.collection("Events")
 
-    docs = events_ref.get()
+    eventsDB = db.collection("Events")
 
-    # READ each Document
-    for doc in docs:
+    print("1. Create a new event")
+    print("2. Read the event data")
+    print("3. Update event")
+    print("4. Delete event")
+    eventUser = int(input("Your Choice: "))
+
+# CREATE new Document
+    if eventUser == 1:
+        os.system('clear')
+
+     # Data for new event document
+        print("CREATE\n")
+        eventName = input("Name of Event: ")
         print()
-        print(doc.id)
-        print(doc.to_dict()["Date"])
-        print(doc.to_dict()["Time"])
+        eventDate = input("Date of event (MM/DD/YY): ")
+        print()
+        eventTime = input("What Time is the event at: ")
+        print()
+        eventLocation = input("Location of event: ")
 
+     # Add data to Events database
+        newEvent = {"ID": eventName, "Event": eventName, "Date": eventDate, "Time": eventTime, "Location": eventLocation}
+        
+        eventsDB.document(eventName).set(newEvent)
+
+        print("Event Added")
+
+
+# ID
+# Event
+# Date
+# Time
+# Location
+        
+
+# READ each Document
+    elif eventUser == 2:
+        print("READ")
+        docs = eventsDB.get()
+
+        for doc in docs:
+            print()
+            print(doc.id)
+            print(doc.to_dict()["Date"])
+            print(doc.to_dict()["Time"])
+
+# UPDATE a document
+    elif eventUser == 3:
+        print("UPDATE")
+
+# DELETE a document
+    elif eventUser == 4:
+        print("DELETE")
 
 
 
 ####### GUEST LIST #########
 
 elif userChoice == 2:
-    events_ref = db.collection("Guest List")
+    guestDB = db.collection("Guest List")
 
-    docs = events_ref.get()
+    docs = guestDB.get()
 
     # READ each Document
     for doc in docs:
