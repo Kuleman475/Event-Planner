@@ -94,10 +94,10 @@ elif userChoice == 2:
 
     docs = guestDB.get()
 
-    print("1. Create a new event")
-    print("2. Read the event data")
-    print("3. Update event")
-    print("4. Delete event")
+    print("1. Create a new Guest")
+    print("2. Read the Guest List")
+    print("3. Update Guest")
+    print("4. Delete Guest")
     guestUser = int(input("Your Choice: "))
 
     if guestUser == 1:
@@ -142,8 +142,20 @@ elif userChoice == 2:
         print("5. RSVP")
         userUpdate = int(input("Your Choice: "))
         if userUpdate == 1:
-            guestDB.document().update({"ID": guestUpdate})
-
+            guestName = input("Name: ")
+            guestDB.document(guestUpdate).update({"Name": guestName, "ID": guestUpdate})
+        elif userUpdate == 2:
+            guestEvent = input("Event: ")
+            guestDB.document(guestUpdate).update({"EventID": guestEvent, "ID": guestUpdate})
+        elif userUpdate == 3:
+            guestPhone = input("Phone #: ")
+            guestDB.document(guestUpdate).update({"Phone": guestPhone, "ID": guestUpdate})
+        elif userUpdate == 4:
+            guestEmail = input("Email: ")
+            guestDB.document(guestUpdate).update({"Email": guestEmail, "ID": guestUpdate})
+        elif userUpdate == 5:
+            guestRSVP = input("RSVP: ")
+            guestDB.document(guestUpdate).update({"RSVP": guestRSVP, "ID": guestUpdate})
 
     elif guestUser == 4:
         print("DELETE")
