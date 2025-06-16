@@ -15,7 +15,7 @@ print("2. Guest")
 userChoice = int(input("Your Choice: "))
 
 
-####### EVENTS  ############
+####################  EVENTS  #############################
 if userChoice == 1:
 
     eventsDB = db.collection("Events")
@@ -47,14 +47,6 @@ if userChoice == 1:
 
         print("Event Added")
 
-
-# ID
-# Event
-# Date
-# Time
-# Location
-        
-
 # READ each Document
     elif eventUser == 2:
         print("READ")
@@ -69,20 +61,89 @@ if userChoice == 1:
 # UPDATE a document
     elif eventUser == 3:
         print("UPDATE")
+        print()
+        print("Which event would you like to update?")
+        docs = eventsDB.get()
+        for doc in docs:
+            print(doc.id)
+        eventUpdate = input("Event Name: ")
+        print()
+        print("Which Item would you like to update?")
+        print("1. Name")
+        print("2. Date")
+        print("3. Time")
+        print("4. Location")
+        userUpdate = int(input("Your Choice: "))
+        if userUpdate == 1:
+            print("Events")
+            nameUpdate = input("Event Name: ")
+            eventsDB.document(eventUpdate).update({"Event": nameUpdate, "ID": nameUpdate})
 
 # DELETE a document
     elif eventUser == 4:
         print("DELETE")
+        print()
+        print("which event would you like to delete?: ")
+        eventDelete = input("")
+        eventsDB.document(eventDelete).delete()
 
-
-
-####### GUEST LIST #########
+################## GUEST LIST #########################
 
 elif userChoice == 2:
     guestDB = db.collection("Guest List")
 
     docs = guestDB.get()
 
+    print("1. Create a new event")
+    print("2. Read the event data")
+    print("3. Update event")
+    print("4. Delete event")
+    guestUser = int(input("Your Choice: "))
+
+    if guestUser == 1:
+    # CREATE a new Document
+
+        # New Guest
+        print()
+        guestName = input("Guest Name: ")
+        print()
+        guestPhone = input("Phone #: ")
+        print()
+        guestEmail = input("Email Address: ")
+        print()
+        guestEvent = input("Event: ")
+        print()
+        guestRSVP = input("RSVP for Event (Yes/No): ")
+
+        #Add to Database
+        newGuest={"ID": guestName, "Name": guestName, "Phone": guestPhone, "Email": guestEmail, "EventID": guestEvent, "RSVP": guestRSVP}
+        guestDB.document(guestName).set(newGuest)
+
+        print()
+        print("GUEST ADDED")
+
+    elif guestUser == 2:
     # READ each Document
-    for doc in docs:
-        print(doc.id)
+        for doc in docs:
+            print(doc.id)
+    
+    elif guestUser == 3:
+        print("UPDATE")
+        print()
+        print("What guest do you want to update?: ")
+        guestUpdate = input("")
+
+        print()
+        print("Which Item would you like to update?")
+        print("1. Name")
+        print("2. Event")
+        print("3. Phone")
+        print("4. Email")
+        print("5. RSVP")
+        userUpdate = int(input("Your Choice: "))
+        if userUpdate == 1:
+            guestDB.document().update({"ID": guestUpdate})
+
+
+    elif guestUser == 4:
+        print("DELETE")
