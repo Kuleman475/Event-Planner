@@ -23,6 +23,7 @@ while(userChoice != 3):
     if userChoice == 1:
 
         eventsDB = db.collection("Events")
+        guestDB = db.collection("Guest List")
 
         print("1. Create a new event")
         print("2. Read the event data")
@@ -56,13 +57,18 @@ while(userChoice != 3):
             os.system('clear')
             print("READ")
             docs = eventsDB.get()
-
             for doc in docs:
                 print()
                 print("Name: ", doc.to_dict()["Event"])
                 print("Date: ", doc.to_dict()["Date"])
                 print("Time: ", doc.to_dict()["Time"])
                 print("Location: " ,doc.to_dict()["Location"])
+                matchingDocs = guestDB.where(filter=FieldFilter("EventID", "==", doc.id)).get()
+                count = 0
+                for match in matchingDocs:
+                    if(match.to_dict()["RSVP"] == "Yes"):
+                        count += 1    
+                print("RSVP #: ", count)
 
             print()
             input("Press enter key when done.... ")
