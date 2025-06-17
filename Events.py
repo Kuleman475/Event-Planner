@@ -167,6 +167,7 @@ while(userChoice != 3):
             for doc in docs:
                 print(doc.id)
                 print(doc.to_dict())
+            time.sleep(5)
         
         elif guestUser == 3:
             os.system('clear')
@@ -174,7 +175,9 @@ while(userChoice != 3):
             print()
             print("What guest do you want to update?: ")
             guestUpdate = input("")
-
+            matchingDocs = guestDB.where(filter=FieldFilter("Name", "==", guestUpdate)).get()
+            doc = matchingDocs[0]
+            docID = doc.id
             print()
             print("Which Item would you like to update?")
             print("1. Name")
@@ -185,19 +188,21 @@ while(userChoice != 3):
             userUpdate = int(input("Your Choice: "))
             if userUpdate == 1:
                 guestName = input("Name: ")
-                guestDB.document(guestUpdate).update({"Name": guestName, "ID": guestUpdate})
+                guestDB.document(docID).update({"Name": guestName, "ID": docID})
             elif userUpdate == 2:
                 guestEvent = input("Event: ")
-                guestDB.document(guestUpdate).update({"EventID": guestEvent, "ID": guestUpdate})
+                guestDB.document(docID).update({"EventID": guestEvent, "ID": docID})
             elif userUpdate == 3:
                 guestPhone = input("Phone #: ")
-                guestDB.document(guestUpdate).update({"Phone": guestPhone, "ID": guestUpdate})
+                guestDB.document(docID).update({"Phone": guestPhone, "ID": docID})
             elif userUpdate == 4:
                 guestEmail = input("Email: ")
-                guestDB.document(guestUpdate).update({"Email": guestEmail, "ID": guestUpdate})
+                guestDB.document(docID).update({"Email": guestEmail, "ID": docID})
             elif userUpdate == 5:
                 guestRSVP = input("RSVP: ")
-                guestDB.document(guestUpdate).update({"RSVP": guestRSVP, "ID": guestUpdate})
+                guestDB.document(docID).update({"RSVP": guestRSVP, "ID": docID})
+            
+            print("GUEST UPDATED")
 
         elif guestUser == 4:
             os.system('clear')
