@@ -12,6 +12,9 @@ Sprint 4 Hours and Websites
 1 Hour Clean up Code
 2 Hour Testing
 1 Hour adding RSVP count to Events
+1 Hour Readme
+1 Hour Video and Submit
+1 Hour Soft Skills
 
 
 https://firebase.google.com/docs/firestore/quickstart#python
@@ -20,23 +23,3 @@ https://cloud.google.com/python/docs/reference/firestore/latest
 https://firebase.google.com/docs/firestore/query-data/get-data#python_2
 https://firebase.google.com/docs/firestore/manage-data/add-data#python
 https://firebase.google.com/docs/firestore/query-data/queries#python
-
-
-Events
-
-ID
-Event
-Date
-Time
-Location
-
-
-
-Guest List
-
-ID
-eventID
-Name
-Phone
-Email
-RSVP
