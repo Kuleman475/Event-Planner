@@ -4,7 +4,7 @@ I wrote an event planner that has it where you can create an event that people c
 
 I wrote this software because I have never used anything cloud based or using firestore so I thought it would be a fun way to learn how to use the firestore. 
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Event Planner Demo](https://youtu.be/-E63Xfd6Mo4)
 
 # Cloud Database
 
